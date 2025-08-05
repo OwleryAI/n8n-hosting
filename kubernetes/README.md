@@ -26,3 +26,8 @@ into cloud provider specific branches.
 
 If you have a contribution specific to a cloud provider, please open your PR to
 the relevant branch.
+
+## Setting up SSL connection to aws postgres
+* Download the global certs from https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html#UsingWithRDS.SSL.CertificatesAllRegions
+* Add it as a configmap called global-ca-bundle `kubectl create configmap --from-file=<path to global bundle.pem>`(the name of the configmap is important, and is specifically used in the n8n-deployment.yaml. Check this file in case the name changes)
+* Note the NODE_EXTRA_CA_CERTS environment variable is set when running n8n, so it knows where to look for other certs to trust
