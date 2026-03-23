@@ -21,7 +21,7 @@ spec:
         service: postgres-n8n
     spec:
       containers:
-        - image: postgres:11
+        - image: postgres:15
           name: postgres
           resources:
             limits:
@@ -33,7 +33,7 @@ spec:
           ports:
             - containerPort: 5432
           volumeMounts:
-            - name: postgresql-pv
+            - name: postgresql-pv-15
               mountPath: /var/lib/postgresql/data
             - name: init-data
               mountPath: /docker-entrypoint-initdb.d/init-n8n-user.sh
@@ -69,9 +69,9 @@ spec:
               value: '5432'
       restartPolicy: Always
       volumes:
-        - name: postgresql-pv
+        - name: postgresql-pv-15
           persistentVolumeClaim:
-            claimName: postgresql-pv
+            claimName: postgresql-pv-15
         - name: postgres-secret
           secret:
             secretName: postgres-secret

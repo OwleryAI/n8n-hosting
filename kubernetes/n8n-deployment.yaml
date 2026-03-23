@@ -60,7 +60,9 @@ spec:
             - name: N8N_LOG_LEVEL 
               value: "debug"
             - name: N8N_LOG_OUTPUT 
-              value: "file"
+              value: "console,file"
+            - name: N8N_LOG_FILE_MAXCOUNT 
+              value: "10"
           image: n8nio/n8n
           name: n8n
           ports:
